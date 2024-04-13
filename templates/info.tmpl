@@ -4,15 +4,20 @@
     <div class="row">
         <div class="col-10 offset-md-1" id="doc-content">
             <h3 class="display-3">About us</h3>
-            {{ range . }}
-            <div class="name-badge border border-2 border-warning rounded-1">
-                <div class="image">
-                    <img src="{{ .Img }}" class="rounded-1"></img>
+            <div class="d-flex justify-content-between flex-wrap">
+                {{ range . }}
+                <div class="name-badge border border-2 border-warning rounded-1 mb-2">
+                    <div class="img-badge rounded-2">
+                        <img src="{{ .Img }}" class=""></img>
+                    </div>
+                    <div class="name-badge-content">
+                        <p class="first-name lead fs-4">{{ .FirstName }}</p>
+                        <p class="last-name display-4 text-warning-emphasis"><b>{{ .LastName }}</b></p>
+                        <p class="desc lead fs-3 text-decoration-underline text-secondary-subtle">{{ .Desc }}</p>
+                    </div>
                 </div>
-                <p class="name fs-5">{{ .Name }}</p>
-                <p class="desc fs-6">{{ .Desc }}</p>
+                {{ end }}
             </div>
-            {{ end }}
         </div>
     </div>
 </div>
