@@ -1,21 +1,22 @@
 {{ define "documentation" }}
 {{ template "header" }}
-<div class="container mt-3">
+<div class="container mt-3 fs-3">
     <div class="row">
         <div class="col-10 offset-md-1" id="doc-content">
-            <h3>Documentation</h3>
+            <h3 class="display-3">Documentation</h3>
             <section class="container-fluid" id="overview">
-                <h4>Overview</h4>
+                <h4 class="display-4">Overview</h4>
                 <p><mark>TODO<mark></p>
             </section>
             <section class="container-fluid" id="api">
-                <h4>APIs</h4>
+                <h4 class="display-4">APIs</h4>
                 <p>
                     Our product provides a collection of APIs that supports human
                     verficiation over voice and face detection.
                 </p>
                 <section class="container-fluid" id="api-face">
-                    <h5>Face detection</h5>
+                    <p class="lead fs-3">Image data</p>
+                    <h5 class="display-5">Face detection on image</h5>
                     <p>
                         To verify if a face recording is legitimate, you can send an
                         API call with the media file as <code>multipart/form-data</code>
@@ -43,8 +44,8 @@ Accept-Language: en-US,en;q=0.9
 Connection: close
 
 ------WebKitFormBoundary7fxWlxxTT4akf6VF
-Content-Disposition: form-data; name="file"; filename="test.wav"
-Content-Type: audio/wav
+Content-Disposition: form-data; name="file"; filename="test.png"
+Content-Type: image/png
 
 <mark>file content</mark>
 ------WebKitFormBoundary7fxWlxxTT4akf6VF--
@@ -53,12 +54,78 @@ Content-Type: audio/wav
                     <b>Response</b>
                     <pre class="p-2 border border-primary rounded-1">
                         <code>
-                            <mark>TODO</mark>
+Connection: keep-alive
+Content-Length: 61
+Content-Type: application/json; charset=utf-8
+Date: Sat, 13 Apr 2024 21:22:55 GMT
+
+<b>{"success":true,"data":{"valid":true},"msg":"Image is valid"}</b>
                         </code>
                     </pre>
 
-                    <p class="lead">You can try with our playground API</p>
+                    <p class="lead fs-3">You can try with our playground API</p>
                     <form id="" class="form" action="/api/face" method="POST">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input id="face-verify-file" class="form-control" type="file" name="file">
+                                <span class="input-group-text"><i class="bi bi-file-earmark-arrow-up"></i></span>
+                            </div>
+                            <label id="face-verify-label-success" class="form-label text-success"></label>
+                            <label id="face-verify-label-danger" class="form-label text-danger"></label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </form>
+                    <hr>
+                    <p class="lead fs-3">Video data</p>
+                    <h5 class="display-5">Face detection on video</h5>
+                    <p>
+                        To verify if a face recording is legitimate, you can send an
+                        API call with the media file as <code>multipart/form-data</code>
+                        <br>
+                        For example:
+                    </p>
+                    <b>Request</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+<b>POST</b> /api/face-video HTTP/1.1
+Host: <mark>domain</mark>
+Content-Length: 653601
+sec-ch-ua: "Chromium";v="123", "Not:A-Brand";v="8"
+sec-ch-ua-platform: "Windows"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.6312.88 Safari/537.36
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7fxWlxxTT4akf6VF
+Accept: */*
+Origin: <mark>domain</mark>
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+------WebKitFormBoundary7fxWlxxTT4akf6VF
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: video/mp4
+
+<mark>file content</mark>
+------WebKitFormBoundary7fxWlxxTT4akf6VF--
+                        </code>
+                    </pre>
+                    <b>Response</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+Connection: keep-alive
+Content-Length: 61
+Content-Type: application/json; charset=utf-8
+Date: Sat, 13 Apr 2024 21:22:55 GMT
+
+<b>{"success":true,"data":{"valid":true},"msg":"Video is valid"}</b>
+                        </code>
+                    </pre>
+
+                    <p class="lead fs-3">You can try with our playground API</p>
+                    <form id="" class="form" action="/api/face-video" method="POST">
                         <div class="mb-3">
                             <div class="input-group">
                                 <input id="face-verify-file" class="form-control" type="file" name="file">
@@ -72,7 +139,7 @@ Content-Type: audio/wav
                 </section>
                 <hr>
                 <section class="container-fluid" id="api-face">
-                    <h5>Voice verification</h5>
+                    <h5 class="display-5">Voice verification</h5>
                     <p>
                         Apart from visual data, we also support an alternative method
                         to conveniently verify the legitimacy of a new user by checking
@@ -83,7 +150,7 @@ Content-Type: audio/wav
                         <br>
                         For example:
                     </p>
-                    <p class="lead">Inital voice upload</p>
+                    <p class="lead fs-3">Inital voice upload</p>
                     <b>Request</b>
                     <pre class="p-2 border border-primary rounded-1">
                         <code>
@@ -126,7 +193,7 @@ Content-Length: 216
                         </code>
                     </pre>
 
-                    <p class="lead">You can try with our playground API</p>
+                    <p class="lead fs-3">You can try with our playground API</p>
                     <form id="" class="form" action="/api/voice/upload" method="POST">
                         <div class="mb-3">
                             <div class="input-group mb-3">
@@ -139,7 +206,7 @@ Content-Length: 216
                         <button class="btn btn-primary" type="submit">Upload</button>
                     </form>
                     <hr>
-                    <p class="lead">Subsequent</p>
+                    <p class="lead fs-3">Subsequent request</p>
                     <b>Request</b>
                     <pre class="p-2 border border-primary rounded-1">
                         <code>
@@ -184,7 +251,7 @@ Content-Length: 67
                         </code>
                     </pre>
 
-                    <p class="lead">You can try with our playground API</p>
+                    <p class="lead fs-3">You can try with our playground API</p>
                     <form id="" class="form" action="/api/voice/verify" method="POST">
                         <div class="mb-3">
                             <div class="input-group mb-3">

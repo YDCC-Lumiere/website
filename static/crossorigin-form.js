@@ -8,6 +8,9 @@ const handleSubmit = async (event) => {
     body: data
   }).then(res => res.json());
 
+  target.getElementsByTagName('label')[0].innerText = ""
+  target.getElementsByTagName('label')[1].innerText = ""
+
   if (res.success) {
     target.getElementsByTagName('label')[0].innerText = res.msg
   }
