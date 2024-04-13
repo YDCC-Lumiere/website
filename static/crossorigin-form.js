@@ -6,10 +6,13 @@ const handleSubmit = async (event) => {
   const res = await fetch(target.action, {
     method: target.method,
     body: data
-  }).then(res => res.text());
+  }).then(res => res.json());
 
-  if (res === "OK") {
-    target.getElementsByTagName('label')[0].innerText = "File is uploaded"
+  if (res.success) {
+    target.getElementsByTagName('label')[0].innerText = res.msg
+  }
+  else {
+    target.getElementsByTagName('label')[1].innerText = res.msg
   }
 }
 

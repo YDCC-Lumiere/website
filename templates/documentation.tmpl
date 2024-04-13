@@ -1,52 +1,208 @@
 {{ define "documentation" }}
 {{ template "header" }}
-<div class="row">
-    <div class="col-8 container" id="doc-content">
-        <h3>Documentation</h3>
-        <section class="container-fluid" id="overview">
-            <h4>Overview</h4>
-            <p><mark>TODO<mark></p>
-        </section>
-        <section class="container-fluid" id="api">
-            <h4>APIs</h4>
-            <p>
-                Our product provides a collection of APIs that supports human
-                verficiation over voice and face detection.
-            </p>
-            <section class="container-fluid" id="api-face">
-                <h5>Face detection</h5>
-                <p>
-                    To verify if a face recording is legitimate, you can send an
-                    API call with the media file as <code>multipart/form-data</code>
-                    <br>
-                    For example:
-                </p>
-                <b>Request</b>
-                <pre>
-                    <code>
-                        <mark>TODO</mark>
-                    </code>
-                </pre>
-                <b>Response</b>
-                <pre>
-                    <code>
-                        <mark>TODO</mark>
-                    </code>
-                </pre>
-
-                <p class="lead">You can try with our playground API</p>
-                <form id="" class="form" action="/api/face" method="POST">
-                    <div class="mb-3">
-                        <div class="input-group">
-                            <input id="face-file-input" class="form-control" type="file" name="file">
-                            <span class="input-group-text"><mark>TODO</mark> file icon here</span>
-                        </div>
-                        <label id="face-file-input-label" for="face-file-input" class="form-label text-success"></label>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Upload</button>
-                </form>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-10 offset-md-1" id="doc-content">
+            <h3>Documentation</h3>
+            <section class="container-fluid" id="overview">
+                <h4>Overview</h4>
+                <p><mark>TODO<mark></p>
             </section>
-        </section>
+            <section class="container-fluid" id="api">
+                <h4>APIs</h4>
+                <p>
+                    Our product provides a collection of APIs that supports human
+                    verficiation over voice and face detection.
+                </p>
+                <section class="container-fluid" id="api-face">
+                    <h5>Face detection</h5>
+                    <p>
+                        To verify if a face recording is legitimate, you can send an
+                        API call with the media file as <code>multipart/form-data</code>
+                        <br>
+                        For example:
+                    </p>
+                    <b>Request</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+<b>POST</b> /api/face HTTP/1.1
+Host: <mark>domain</mark>
+Content-Length: 653601
+sec-ch-ua: "Chromium";v="123", "Not:A-Brand";v="8"
+sec-ch-ua-platform: "Windows"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.6312.88 Safari/537.36
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7fxWlxxTT4akf6VF
+Accept: */*
+Origin: <mark>domain</mark>
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+------WebKitFormBoundary7fxWlxxTT4akf6VF
+Content-Disposition: form-data; name="file"; filename="test.wav"
+Content-Type: audio/wav
+
+<mark>file content</mark>
+------WebKitFormBoundary7fxWlxxTT4akf6VF--
+                        </code>
+                    </pre>
+                    <b>Response</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+                            <mark>TODO</mark>
+                        </code>
+                    </pre>
+
+                    <p class="lead">You can try with our playground API</p>
+                    <form id="" class="form" action="/api/face" method="POST">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input id="face-verify-file" class="form-control" type="file" name="file">
+                                <span class="input-group-text"><i class="bi bi-file-earmark-arrow-up"></i></span>
+                            </div>
+                            <label id="face-verify-label-success" class="form-label text-success"></label>
+                            <label id="face-verify-label-danger" class="form-label text-danger"></label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </form>
+                </section>
+                <hr>
+                <section class="container-fluid" id="api-face">
+                    <h5>Voice verification</h5>
+                    <p>
+                        Apart from visual data, we also support an alternative method
+                        to conveniently verify the legitimacy of a new user by checking
+                        their voice recording data. This requires an initial sample voice
+                        from the user, which is then used as a ground truth to validate
+                        their human presence in subsequent requests. The data is also
+                        transmitted as <code>multipart/form-data</code>
+                        <br>
+                        For example:
+                    </p>
+                    <p class="lead">Inital voice upload</p>
+                    <b>Request</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+<b>POST</b> /api/voice/upload HTTP/1.1
+Host: <mark>domain</mark>
+Content-Length: 653601
+sec-ch-ua: "Chromium";v="123", "Not:A-Brand";v="8"
+sec-ch-ua-platform: "Windows"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.6312.88 Safari/537.36
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7fxWlxxTT4akf6VF
+Accept: */*
+Origin: <mark>domain</mark>
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+------WebKitFormBoundary7fxWlxxTT4akf6VF
+Content-Disposition: form-data; name="file"; filename="test.wav"
+Content-Type: audio/wav
+
+<mark>file content</mark>
+------WebKitFormBoundary7fxWlxxTT4akf6VF--
+                        </code>
+                    </pre>
+                    <b>Response</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+HTTP/1.1 200 OK
+Server: nginx/1.25.4
+Date: Sat, 13 Apr 2024 16:27:59 GMT
+Content-Type: application/json
+Content-Length: 216
+
+<b>{"success":true,"data":{"acknowledged":true,"insertedId":"661ad3d506d06eddf3f21a88","user_id":"37e25c4f-2e1c-48f1-a3f3-836eb05a3f86"},"msg":"File upload successfully, user_id is 37e25c4f-2e1c-48f1-a3f3-836eb05a3f86"}</b>
+
+                        </code>
+                    </pre>
+
+                    <p class="lead">You can try with our playground API</p>
+                    <form id="" class="form" action="/api/voice/upload" method="POST">
+                        <div class="mb-3">
+                            <div class="input-group mb-3">
+                                <input id="voice-upload-file" class="form-control" type="file" name="file">
+                                <span class="input-group-text"><i class="bi bi-file-earmark-arrow-up"></i></span>
+                            </div>
+                            <label id="voice-upload-label-success" class="form-label text-success"></label>
+                            <label id="voice-upload-label-danger" class="form-label text-danger"></label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </form>
+                    <hr>
+                    <p class="lead">Subsequent</p>
+                    <b>Request</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+<b>POST</b> /api/voice/verify HTTP/1.1
+Host: <mark>domain</mark>
+Content-Length: 653601
+sec-ch-ua: "Chromium";v="123", "Not:A-Brand";v="8"
+sec-ch-ua-platform: "Windows"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.6312.88 Safari/537.36
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7fxWlxxTT4akf6VF
+Accept: */*
+Origin: <mark>domain</mark>
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+------WebKitFormBoundary7fxWlxxTT4akf6VF
+Content-Disposition: form-data; name="file"; filename="test.wav"
+Content-Type: audio/wav
+
+<mark>file content</mark>
+------WebKitFormBoundaryaX3yE0JxUKwIUu52
+Content-Disposition: form-data; name="user_id"
+
+<mark>user_id</mark>
+------WebKitFormBoundary7fxWlxxTT4akf6VF--
+                        </code>
+                    </pre>
+                    <b>Response</b>
+                    <pre class="p-2 border border-primary rounded-1">
+                        <code>
+HTTP/1.1 200 OK
+Date: Sat, 13 Apr 2024 16:27:59 GMT
+Content-Type: application/json
+Content-Length: 67
+
+<b>{"success":true,"data":{"verify":true},"msg":"Audio file is vaild"}</b>
+                        </code>
+                    </pre>
+
+                    <p class="lead">You can try with our playground API</p>
+                    <form id="" class="form" action="/api/voice/verify" method="POST">
+                        <div class="mb-3">
+                            <div class="input-group mb-3">
+                                <input id="voice-verify-file" class="form-control" type="file" name="file">
+                                <span class="input-group-text"><i class="bi bi-file-earmark-arrow-up"></i></span>
+                            </div>
+                            <div class="mb-3">
+                                <p for="voice-verify-id" class="form-label">User ID</p>
+                                <input id="voice-verify-id" class="form-control" name="user_id">
+                            </div>
+                            <label id="voice-verify-label-success" class="form-label text-success"></label>
+                            <label id="voice-verify-label-danger" class="form-label text-danger"></label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </form>
+                </section>
+            </section>
+        </div>
     </div>
 </div>
 <script src="static/crossorigin-form.js"></script>

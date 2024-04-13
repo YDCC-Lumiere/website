@@ -19,3 +19,7 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
 }
+
+pre {
+    white-space: break-spaces;
+}
