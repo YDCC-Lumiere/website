@@ -33,7 +33,7 @@ func Initialize(glob string) {
 }
 
 func Alert(_type string, title string, content string) {
-	Add("alert.tmpl", AlertData{Type: _type, Title: title, Content: content})
+	Add("alert", AlertData{Type: _type, Title: title, Content: content})
 }
 
 func Add(name string, data any) {

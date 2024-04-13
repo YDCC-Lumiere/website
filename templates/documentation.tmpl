@@ -1,0 +1,54 @@
+{{ define "documentation" }}
+{{ template "header" }}
+<div class="row">
+    <div class="col-8 container" id="doc-content">
+        <h3>Documentation</h3>
+        <section class="container-fluid" id="overview">
+            <h4>Overview</h4>
+            <p><mark>TODO<mark></p>
+        </section>
+        <section class="container-fluid" id="api">
+            <h4>APIs</h4>
+            <p>
+                Our product provides a collection of APIs that supports human
+                verficiation over voice and face detection.
+            </p>
+            <section class="container-fluid" id="api-face">
+                <h5>Face detection</h5>
+                <p>
+                    To verify if a face recording is legitimate, you can send an
+                    API call with the media file as <code>multipart/form-data</code>
+                    <br>
+                    For example:
+                </p>
+                <b>Request</b>
+                <pre>
+                    <code>
+                        <mark>TODO</mark>
+                    </code>
+                </pre>
+                <b>Response</b>
+                <pre>
+                    <code>
+                        <mark>TODO</mark>
+                    </code>
+                </pre>
+
+                <p class="lead">You can try with our playground API</p>
+                <form id="" class="form" action="/api/face" method="POST">
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input id="face-file-input" class="form-control" type="file" name="file">
+                            <span class="input-group-text"><mark>TODO</mark> file icon here</span>
+                        </div>
+                        <label id="face-file-input-label" for="face-file-input" class="form-label text-success"></label>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </form>
+            </section>
+        </section>
+    </div>
+</div>
+<script src="static/crossorigin-form.js"></script>
+{{ template "footer" }}
+{{ end }}

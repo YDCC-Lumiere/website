@@ -6,9 +6,12 @@ import (
   "go-mine/controller"
   "go-mine/middleware"
   "go-mine/view"
+  "go-mine/config"
 )
 
 func main() {
+  //TODO: fix this
+  config.Init("development")
 
   r := gin.Default()
   r.Static("/static", "./static")
@@ -16,6 +19,6 @@ func main() {
   r.Use(middleware.TextHTML())
   view.Initialize("templates/*")
 
-  controller.DocsController(r.Group("docs"))
+  controller.CommonController(r.Group("/"))
   r.Run()
 }

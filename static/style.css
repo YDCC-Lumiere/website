@@ -15,7 +15,7 @@
     opacity: 1;
     animation-name: disappear;
     animation-duration: .5s;
-    animation-delay: 1s;
+    animation-delay: 100s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
 }

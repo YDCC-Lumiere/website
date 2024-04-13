@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	"log"
-	"path/filepath"
 
 	"github.com/spf13/viper"
 )
@@ -13,10 +12,10 @@ var config *viper.Viper
 func Init (env string) {
 	config = viper.New()
 	config.SetConfigType("yaml")
-	config.SetConfigName("default")
+	config.SetConfigName(env)
 	config.AddConfigPath("config/")
 	if err := config.ReadInConfig(); err != nil {
-		log.Fatal(fmt.Sprintf("can't read config %s", env))
+		log.Fatal(fmt.Sprintf("can't read config %s; %v", env, err))
 	}
 
 	// TODO: add env
