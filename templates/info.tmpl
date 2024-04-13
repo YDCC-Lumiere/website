@@ -13,7 +13,12 @@
                     <div class="name-badge-content">
                         <p class="first-name lead fs-4">{{ .FirstName }}</p>
                         <p class="last-name display-4 text-warning-emphasis"><b>{{ .LastName }}</b></p>
-                        <p class="desc lead fs-3 text-decoration-underline text-secondary-subtle">{{ .Desc }}</p>
+                        <p class="account lead fs-4 pe-4 text-end text-primary-subtle">@{{ .Account }}</p>
+                        <p class="desc lead fs-3 text-decoration-underline">
+                            <a href="https://github.com/{{ .Account }}" class="text-decoration-none link-secondary">
+                                {{ .Desc }}
+                            </a>
+                        </p>
                     </div>
                 </div>
                 {{ end }}

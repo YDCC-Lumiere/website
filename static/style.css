@@ -52,3 +52,7 @@ pre {
     top: 10px;
     width: 270px;
 }
+
+.name-badge-content p{
+    margin: 0 !important;
+}
