@@ -1,0 +1,13 @@
+{{ define "alert" }}
+<div class="toast show align-items-center text-bg-{{ .Type }} border-0" hx-swap-oob="true" id="alert">
+    <div class="toast-header">
+        <strong class="me-auto">{{ .Title }}</strong>
+        <button type="button" class="btn-close" hx-post="/alert" hx-swap="outerHTML transition:true" hx-target="#alert"></button>
+    </div>
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+{{ end }}

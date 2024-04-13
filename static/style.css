@@ -1,0 +1,21 @@
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.toast {
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+    opacity: 1;
+    animation-name: disappear;
+    animation-duration: .5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
